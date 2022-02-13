@@ -29,6 +29,8 @@ void loadMaze();
 void loadNewMaze();
 void resetMaze();
 void printMaze();
+bool isEnergizer();
+string energizerStatus = "Low_power";
 void gotoxy(int x, int y);
 int count = 0;
 bool switch_flag = true;
@@ -81,7 +83,6 @@ main()
                 break;
             }
             gameRunning = move();
-            // printScore();
             if (GetAsyncKeyState(VK_LEFT))
             {
                 movePacmanLeft();
@@ -203,6 +204,9 @@ void movePacmanLeft()
         {
             calculateScore();
         }
+        else if(maze[pacmanX][pacmanY] == '/'){
+            energizerStatus = "eaten";
+        }
         maze[pacmanX][pacmanY] = 'P';
     }
 }
@@ -219,6 +223,9 @@ void movePacmanRight()
         if (maze[pacmanX][pacmanY] == '.')
         {
             calculateScore();
+        }
+        else if(maze[pacmanX][pacmanY] == '/'){
+            energizerStatus = "eaten";
         }
         maze[pacmanX][pacmanY] = 'P';
     }
@@ -237,6 +244,9 @@ void movePacmanUp()
         {
             calculateScore();
         }
+        else if(maze[pacmanX][pacmanY] == '/'){
+            energizerStatus = "eaten";
+        }
         maze[pacmanX][pacmanY] = 'P';
     }
 }
@@ -253,6 +263,9 @@ void movePacmanDown()
         if (maze[pacmanX][pacmanY] == '.')
         {
             calculateScore();
+        }
+        else if(maze[pacmanX][pacmanY] == '/'){
+            energizerStatus = "eaten";
         }
         maze[pacmanX][pacmanY] = 'P';
     }
@@ -277,6 +290,7 @@ bool ghostMovement()
             ghostY1 = ghostY1 - 1;
             gotoxy(ghostY1, ghostX1);
             cout << "G";
+            if(maze[ghostX1][ghostY1] != 'G')
             previousItem1 = maze[ghostX1][ghostY1];
             if (ghostX1 == pacmanX && ghostY1 == pacmanY)
             {
@@ -295,6 +309,7 @@ bool ghostMovement()
             ghostY1 = ghostY1 + 1;
             gotoxy(ghostY1, ghostX1);
             cout << "G";
+            if(maze[ghostX1][ghostY1] != 'G')
             previousItem1 = maze[ghostX1][ghostY1];
             if (ghostX1 == pacmanX && ghostY1 == pacmanY)
             {
@@ -313,6 +328,7 @@ bool ghostMovement()
             ghostX1 = ghostX1 - 1;
             gotoxy(ghostY1, ghostX1);
             cout << "G";
+            if(maze[ghostX1][ghostY1]!='G')
             previousItem1 = maze[ghostX1][ghostY1];
             if (ghostX1 == pacmanX && ghostY1 == pacmanY)
             {
@@ -331,6 +347,7 @@ bool ghostMovement()
             ghostX1 = ghostX1 + 1;
             gotoxy(ghostY1, ghostX1);
             cout << "G";
+            if(maze[ghostX1][ghostY1] != 'G')
             previousItem1 = maze[ghostX1][ghostY1];
             if (ghostX1 == pacmanX && ghostY1 == pacmanY)
             {
@@ -350,7 +367,8 @@ bool ghost4MoveRight()
     ghostY4++;
     gotoxy(ghostY4, ghostX4);
     cout << "G";
-    previousItem4 = maze[ghostX4][ghostY4];
+    if(maze[ghostX4][ghostY4] != 'G')
+    {previousItem4 = maze[ghostX4][ghostY4];}
     if (ghostX4 == pacmanX && ghostY4 == pacmanY)
     {
         return 0;
@@ -366,7 +384,8 @@ bool ghost4MoveLeft()
     ghostY4--;
     gotoxy(ghostY4, ghostX4);
     cout << "G";
-    previousItem4 = maze[ghostX4][ghostY4];
+    if(maze[ghostX4][ghostY4]!='G')
+    {previousItem4 = maze[ghostX4][ghostY4];}
     if (ghostX4 == pacmanX && ghostY4 == pacmanY)
     {
         return 0;
@@ -383,7 +402,8 @@ bool ghost4MoveUp()
     ghostX4--;
     gotoxy(ghostY4, ghostX4);
     cout << "G";
-    previousItem4 = maze[ghostX4][ghostY4];
+    if(maze[ghostX4][ghostY4] != 'G')
+    {previousItem4 = maze[ghostX4][ghostY4];}
     if (ghostX4 == pacmanX && ghostY4 == pacmanY)
     {
         return 0;
@@ -399,7 +419,8 @@ bool ghost4MoveDown()
     ghostX4++;
     gotoxy(ghostY4, ghostX4);
     cout << "G";
-    previousItem4 = maze[ghostX4][ghostY4];
+    if(maze[ghostX4][ghostY4] != 'G')
+  {  previousItem4 = maze[ghostX4][ghostY4];}
     if (ghostX4 == pacmanX && ghostY4 == pacmanY)
     {
         return 0;
@@ -707,3 +728,4 @@ bool ghost4MoveRandom()
     }
     return 1;
 }
+
