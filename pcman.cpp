@@ -292,7 +292,7 @@ bool ghostMovement()
             cout << "G";
             if(maze[ghostX1][ghostY1] != 'G')
             previousItem1 = maze[ghostX1][ghostY1];
-            if (ghostX1 == pacmanX && ghostY1 == pacmanY)
+            if (ghostX1 == pacmanX && ghostY1 == pacmanY && energizerStatus == "Low_power")
             {
                 return 0;
             }
@@ -311,7 +311,7 @@ bool ghostMovement()
             cout << "G";
             if(maze[ghostX1][ghostY1] != 'G')
             previousItem1 = maze[ghostX1][ghostY1];
-            if (ghostX1 == pacmanX && ghostY1 == pacmanY)
+            if (ghostX1 == pacmanX && ghostY1 == pacmanY && energizerStatus == "Low_power")
             {
                 return 0;
             }
@@ -330,7 +330,7 @@ bool ghostMovement()
             cout << "G";
             if(maze[ghostX1][ghostY1]!='G')
             previousItem1 = maze[ghostX1][ghostY1];
-            if (ghostX1 == pacmanX && ghostY1 == pacmanY)
+            if (ghostX1 == pacmanX && ghostY1 == pacmanY && energizerStatus == "Low_power")
             {
                 return 0;
             }
@@ -349,7 +349,7 @@ bool ghostMovement()
             cout << "G";
             if(maze[ghostX1][ghostY1] != 'G')
             previousItem1 = maze[ghostX1][ghostY1];
-            if (ghostX1 == pacmanX && ghostY1 == pacmanY)
+            if (ghostX1 == pacmanX && ghostY1 == pacmanY && energizerStatus == "Low_power")
             {
                 return 0;
             }
@@ -369,7 +369,7 @@ bool ghost4MoveRight()
     cout << "G";
     if(maze[ghostX4][ghostY4] != 'G')
     {previousItem4 = maze[ghostX4][ghostY4];}
-    if (ghostX4 == pacmanX && ghostY4 == pacmanY)
+    if (ghostX4 == pacmanX && ghostY4 == pacmanY && energizerStatus == "Low_power")
     {
         return 0;
     }
@@ -386,12 +386,11 @@ bool ghost4MoveLeft()
     cout << "G";
     if(maze[ghostX4][ghostY4]!='G')
     {previousItem4 = maze[ghostX4][ghostY4];}
-    if (ghostX4 == pacmanX && ghostY4 == pacmanY)
+    if (ghostX4 == pacmanX && ghostY4 == pacmanY && energizerStatus == "Low_power")
     {
         return 0;
     }
     maze[ghostX4][ghostY4] = 'G';
-    //}
     return true;
 }
 bool ghost4MoveUp()
@@ -404,7 +403,7 @@ bool ghost4MoveUp()
     cout << "G";
     if(maze[ghostX4][ghostY4] != 'G')
     {previousItem4 = maze[ghostX4][ghostY4];}
-    if (ghostX4 == pacmanX && ghostY4 == pacmanY)
+    if (ghostX4 == pacmanX && ghostY4 == pacmanY && energizerStatus == "Low_power") 
     {
         return 0;
     }
@@ -421,7 +420,7 @@ bool ghost4MoveDown()
     cout << "G";
     if(maze[ghostX4][ghostY4] != 'G')
   {  previousItem4 = maze[ghostX4][ghostY4];}
-    if (ghostX4 == pacmanX && ghostY4 == pacmanY)
+    if (ghostX4 == pacmanX && ghostY4 == pacmanY && energizerStatus == "Low_power")
     {
         return 0;
     }
@@ -665,7 +664,7 @@ bool ghost4MoveRandom()
             gotoxy(ghostY4, ghostX4);
             cout << "G";
             previousItem4 = maze[ghostX4][ghostY4];
-            if (ghostX4 == pacmanX && ghostY4 == pacmanY)
+            if (ghostX4 == pacmanX && ghostY4 == pacmanY && energizerStatus == "Low_power")
             {
                 return 0;
             }
@@ -683,7 +682,7 @@ bool ghost4MoveRandom()
             gotoxy(ghostY4, ghostX4);
             cout << "G";
             previousItem4 = maze[ghostX4][ghostY4];
-            if (ghostX4 == pacmanX && ghostY4 == pacmanY)
+            if (ghostX4 == pacmanX && ghostY4 == pacmanY && energizerStatus == "Low_power")
             {
                 return 0;
             }
@@ -701,7 +700,7 @@ bool ghost4MoveRandom()
             gotoxy(ghostY4, ghostX4);
             cout << "G";
             previousItem4 = maze[ghostX4][ghostY4];
-            if (ghostX4 == pacmanX && ghostY4 == pacmanY)
+            if (ghostX4 == pacmanX && ghostY4 == pacmanY && energizerStatus == "Low_power")
             {
                 return 0;
             }
@@ -719,7 +718,7 @@ bool ghost4MoveRandom()
             gotoxy(ghostY4, ghostX4);
             cout << "G";
             previousItem4 = maze[ghostX4][ghostY4];
-            if (ghostX4 == pacmanX && ghostY4 == pacmanY)
+            if (ghostX4 == pacmanX && ghostY4 == pacmanY && energizerStatus == "Low_power")
             {
                 return 0;
             }
