@@ -115,6 +115,7 @@ main()
                 if (energizer_count == 30)
                 {
                     energizerStatus = "Low_power";
+                    energizer_count = 0;
                 }
             }
             gotoxy(0, 25);
@@ -142,23 +143,6 @@ void calculateScore()
 void printScore()
 {
     cout << "Score: " << score;
-}
-void loadNewMaze()
-{
-    string line = " ";
-    int idx = 0;
-    fstream file;
-    file.open("newmaze.txt", ios::in);
-    while (!file.eof())
-    {
-        getline(file, line);
-        for (int a = 0; a < line.length(); a++)
-        {
-            maze[idx][a] = line[a];
-        }
-        idx++;
-    }
-    file.close();
 }
 void resetMaze()
 {
