@@ -26,6 +26,7 @@ void ghost3MoveRight();
 bool ghost4MoveRandom();
 bool move();
 void loadMaze();
+void loadNewMaze();
 void resetMaze();
 void printMaze();
 void gotoxy(int x, int y);
@@ -44,8 +45,8 @@ int ghostX2 = 3;
 int ghostY2 = 3;
 int ghostX3 = 22;
 int ghostY3 = 2;
-int ghostX4 = 2;
-int ghostY4 = 23;
+int ghostX4 = 3;
+int ghostY4 = 8;
 string row_flag = "pass";
 string col_flag = "pass";
 void moveGhost();
@@ -79,8 +80,6 @@ main()
             break;
         }
         gameRunning = move();
-        string k;
-        cin >> k;
         // printScore();
         if (GetAsyncKeyState(VK_LEFT))
         {
@@ -129,16 +128,45 @@ void printScore()
 {
     cout << "Score: " << score;
 }
+void loadNewMaze(){
+    string line = " ";
+    int idx = 0;
+    fstream file;
+    file.open("newmaze.txt", ios::in);
+    while (!file.eof())
+    {
+        getline(file, line);
+        for (int a = 0; a < line.length(); a++)
+        {
+            maze[idx][a] = line[a];
+        }
+        idx++;
+    }
+    file.close();   
+}
 void resetMaze(){
-loadMaze();
+loadNewMaze();
+gotoxy(pacmanY,pacmanX);
+cout << " ";
+gotoxy(ghostY1,ghostX1);
+cout << " ";
 ghostX1 = 19;
 ghostY1 = 25;
 ghostX2 = 3;
 ghostY2 = 3;
 ghostX3 = 22;
 ghostY3 = 2;
-ghostX4 = 2;
-ghostY4 = 23;
+ghostX4 = 3;
+ghostY4 = 8;
+pacmanX = 9;
+pacmanY = 31;
+maze[pacmanX][pacmanY] = 'P';
+maze[ghostX1][ghostY1] = 'G';
+maze[ghostX2][ghostY2] = 'G';
+maze[ghostX3][ghostY3] = 'G';
+maze[ghostX4][ghostY4] = 'G';
+system("cls");
+printMaze();
 }
 void movePacmanLeft()
 {
@@ -307,7 +335,7 @@ bool ghost4MoveRight()
     {
         return 0;
     }
-    maze[ghostX4][ghostY4] = 'E';
+    maze[ghostX4][ghostY4] = 'G';
     return true;
 }
 bool ghost4MoveLeft()
@@ -323,7 +351,7 @@ bool ghost4MoveLeft()
     {
         return 0;
     }
-    maze[ghostX4][ghostY4] = 'E';
+    maze[ghostX4][ghostY4] = 'G';
     //}
     return true;
 }
