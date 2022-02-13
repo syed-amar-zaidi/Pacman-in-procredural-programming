@@ -109,7 +109,7 @@ main()
             printLives();
         }
         calculateLives();
-        loadMaze();
+        resetMaze();
     }
 }
 void calculateLives()
@@ -148,9 +148,10 @@ void loadNewMaze()
 }
 void resetMaze()
 {
-    loadNewMaze();
-    system("cls");
-    printMaze();
+    previousItem1 = ' ';
+    previousItem2 = ' ';
+    previousItem3 = ' ';
+    previousItem4 = ' ';
     gotoxy(pacmanY, pacmanX);
     cout << " ";
     gotoxy(ghostY1, ghostX1);
@@ -175,16 +176,16 @@ void resetMaze()
     gotoxy(pacmanY, pacmanX);
     cout << "P";
     maze[ghostX1][ghostY1] = 'G';
-    goto(ghostY1, ghostX1);
+    gotoxy(ghostY1, ghostX1);
     cout << "G";
     maze[ghostX2][ghostY2] = 'G';
-    goto(ghostY2, ghostX2);
+    gotoxy(ghostY2, ghostX2);
     cout << "G";
     maze[ghostX3][ghostY3] = 'G';
-    goto(ghostY3, ghostX3);
+    gotoxy(ghostY3, ghostX3);
     cout << "G";
     maze[ghostX4][ghostY4] = 'G';
-    goto(ghostY4, ghostX4);
+    gotoxy(ghostY4, ghostX4);
     cout << "G";
 }
 void movePacmanLeft()
