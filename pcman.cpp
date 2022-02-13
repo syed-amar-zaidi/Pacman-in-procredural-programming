@@ -192,7 +192,7 @@ void resetMaze()
 void movePacmanLeft()
 {
     if (maze[pacmanX][pacmanY - 1] == ' ' || maze[pacmanX][pacmanY - 1] ==
-                                                 '.')
+                                                 '.' || maze[pacmanX][pacmanY-1] == '+')
     {
         maze[pacmanX][pacmanY] = ' ';
         gotoxy(pacmanY, pacmanX);
@@ -204,7 +204,7 @@ void movePacmanLeft()
         {
             calculateScore();
         }
-        else if(maze[pacmanX][pacmanY] == '/'){
+        else if(maze[pacmanX][pacmanY] == '+'){
             energizerStatus = "eaten";
         }
         maze[pacmanX][pacmanY] = 'P';
@@ -212,7 +212,7 @@ void movePacmanLeft()
 }
 void movePacmanRight()
 {
-    if (maze[pacmanX][pacmanY + 1] == ' ' || maze[pacmanX][pacmanY + 1] == '.')
+    if (maze[pacmanX][pacmanY + 1] == ' ' || maze[pacmanX][pacmanY + 1] == '.' || maze[pacmanX][pacmanY+1] == '+')
     {
         maze[pacmanX][pacmanY] = ' ';
         gotoxy(pacmanY, pacmanX);
@@ -224,7 +224,7 @@ void movePacmanRight()
         {
             calculateScore();
         }
-        else if(maze[pacmanX][pacmanY] == '/'){
+        else if(maze[pacmanX][pacmanY] == '+'){
             energizerStatus = "eaten";
         }
         maze[pacmanX][pacmanY] = 'P';
@@ -232,7 +232,7 @@ void movePacmanRight()
 }
 void movePacmanUp()
 {
-    if (maze[pacmanX - 1][pacmanY] == ' ' || maze[pacmanX - 1][pacmanY] == '.')
+    if (maze[pacmanX - 1][pacmanY] == ' ' || maze[pacmanX - 1][pacmanY] == '.' || maze[pacmanX-1][pacmanY] == '+')
     {
         maze[pacmanX][pacmanY] = ' ';
         gotoxy(pacmanY, pacmanX);
@@ -244,7 +244,7 @@ void movePacmanUp()
         {
             calculateScore();
         }
-        else if(maze[pacmanX][pacmanY] == '/'){
+        else if(maze[pacmanX][pacmanY] == '+'){
             energizerStatus = "eaten";
         }
         maze[pacmanX][pacmanY] = 'P';
@@ -252,7 +252,7 @@ void movePacmanUp()
 }
 void movePacmanDown()
 {
-    if (maze[pacmanX + 1][pacmanY] == ' ' || maze[pacmanX + 1][pacmanY] == '.')
+    if (maze[pacmanX + 1][pacmanY] == ' ' || maze[pacmanX + 1][pacmanY] == '.' || maze[pacmanX+1][pacmanY] == '+')
     {
         maze[pacmanX][pacmanY] = ' ';
         gotoxy(pacmanY, pacmanX);
@@ -264,7 +264,7 @@ void movePacmanDown()
         {
             calculateScore();
         }
-        else if(maze[pacmanX][pacmanY] == '/'){
+        else if(maze[pacmanX][pacmanY] == '+'){
             energizerStatus = "eaten";
         }
         maze[pacmanX][pacmanY] = 'P';
@@ -563,7 +563,7 @@ bool ghostMoveVertical()
         }
         ghost2MoveDown();
     }
-    if (ghostX2 == pacmanX && ghostY2 == pacmanY)
+    if (ghostX2 == pacmanX && ghostY2 == pacmanY && energizerStatus == "Low_power")
     {
         return false;
     }
@@ -587,7 +587,7 @@ bool ghostMoveHorizontal()
         }
         ghost3MoveLeft();
     }
-    if (ghostX3 == pacmanX && ghostY3 == pacmanY)
+    if (ghostX3 == pacmanX && ghostY3 == pacmanY && energizerStatus == "Low_power")
     {
         return false;
     }
@@ -727,4 +727,5 @@ bool ghost4MoveRandom()
     }
     return 1;
 }
+
 
