@@ -79,6 +79,8 @@ main()
             break;
         }
         gameRunning = move();
+        string k;
+        cin >> k;
         // printScore();
         if (GetAsyncKeyState(VK_LEFT))
         {
@@ -143,7 +145,6 @@ void movePacmanLeft()
     if (maze[pacmanX][pacmanY - 1] == ' ' || maze[pacmanX][pacmanY - 1] ==
                                                  '.')
     {
-
         maze[pacmanX][pacmanY] = ' ';
         gotoxy(pacmanY, pacmanX);
         cout << " ";
@@ -533,58 +534,50 @@ bool ghostMoveHorizontal()
 
 void ghost2MoveUp()
 {
-    if (previousItem2 != 'G' || previousItem2 != 'P')
-    {
         maze[ghostX2][ghostY2] = previousItem2;
-    }
     gotoxy(ghostY2, ghostX2);
     cout << maze[ghostX2][ghostY2];
     ghostX2--;
     gotoxy(ghostY2, ghostX2);
     cout << "G";
-    previousItem2 = maze[ghostX2][ghostY2];
+    if(maze[ghostX2][ghostY2] != 'G')
+    {previousItem2 = maze[ghostX2][ghostY2];}
     maze[ghostX2][ghostY2] = 'G';
 }
 void ghost2MoveDown()
 {
-    if (previousItem2 != 'G' || previousItem2 != 'P')
-    {
         maze[ghostX2][ghostY2] = previousItem2;
-    }
     gotoxy(ghostY2, ghostX2);
     cout << maze[ghostX2][ghostY2];
     ghostX2++;
     gotoxy(ghostY2, ghostX2);
     cout << "G";
-    previousItem2 = maze[ghostX2][ghostY2];
+    if(maze[ghostX2][ghostY2] != 'G')
+    {previousItem2 = maze[ghostX2][ghostY2];}
     maze[ghostX2][ghostY2] = 'G';
 }
 void ghost3MoveLeft()
 {
-    if (previousItem3 != 'G' || previousItem3 != 'P')
-    {
         maze[ghostX3][ghostY3] = previousItem3;
-    }
     gotoxy(ghostY3, ghostX3);
     cout << maze[ghostX3][ghostY3];
     ghostY3--;
     gotoxy(ghostY3, ghostX3);
     cout << "G";
-    previousItem3 = maze[ghostX3][ghostY3];
+    if(maze[ghostX3][ghostY3] != 'G')
+    {previousItem3 = maze[ghostX3][ghostY3];}
     maze[ghostX3][ghostY3] = 'G';
 }
 void ghost3MoveRight()
 {
-    if (previousItem3 != 'G' || previousItem3 != 'P')
-    {
         maze[ghostX3][ghostY3] = previousItem3;
-    }
     gotoxy(ghostY3, ghostX3);
     cout << maze[ghostX3][ghostY3];
     ghostY3++;
     gotoxy(ghostY3, ghostX3);
     cout << "G";
-    previousItem3 = maze[ghostX3][ghostY3];
+    if(maze[ghostX3][ghostY3] != 'G')
+    {previousItem3 = maze[ghostX3][ghostY3];}
     maze[ghostX3][ghostY3] = 'G';
 }
 bool ghost4MoveRandom()
