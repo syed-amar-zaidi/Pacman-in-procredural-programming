@@ -345,8 +345,6 @@ bool move()
 {
     bool flag1 = false;
     bool flag2 = false;
-    bool flag3 = false;
-    bool flag4 = false;
     bool flag = true;
     if (switch_flag && count == 0)
     {
@@ -361,12 +359,6 @@ bool move()
             {
                 col_flag = "stuck";
             }
-            /*if (flag1 == true)
-            {
-                flag = ghost4MoveDown();
-            }
-            */
-            
         }
         else if (ghostX4 < pacmanX)
         {
@@ -379,11 +371,6 @@ bool move()
             {
                 col_flag = "stuck";
             }
-           /* if (flag2 == true)
-            {
-                flag = ghost4MoveUp();
-            }*/
-            
         }
         else {
             flag1 = true;
@@ -404,11 +391,6 @@ bool move()
             {
                 row_flag = "stuck";
             }
-           /* if (flag3 == true)
-            {
-                flag = ghost4MoveDown();
-            }*/
-            
         }
         else if (ghostY4 < pacmanY)
         {
@@ -421,11 +403,6 @@ bool move()
             {
                 row_flag = "stuck";
             }
-            /*if (flag4 == false)
-            {
-                flag = ghost4MoveDown();
-            }*/ 
-            
         }
         else{
             flag2 = true;
@@ -434,7 +411,6 @@ bool move()
     }
     else if(flag1 == true && row_flag == "stuck" || flag2 == true && col_flag == "stuck")
     {
-        cout << "1";
         flag = ghost4MoveRandom();
         count++;
         if(count == 10){
