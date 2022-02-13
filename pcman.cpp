@@ -5,6 +5,8 @@
 using namespace std;
 void calculateScore();
 void printScore();
+void calculateLives();
+void printLives();
 void movePacmanLeft();
 void movePacmanRight();
 void movePacmanUp();
@@ -24,6 +26,7 @@ void ghost3MoveRight();
 bool ghost4MoveRandom();
 bool move();
 void loadMaze();
+void resetMaze();
 void printMaze();
 void gotoxy(int x, int y);
 int count = 0;
@@ -34,6 +37,7 @@ int tmp_count2 = 0;
 int pacmanX = 9;
 int pacmanY = 31;
 int score = 0;
+int lives = 3;
 int ghostX1 = 19;
 int ghostY1 = 25;
 int ghostX2 = 3;
@@ -54,7 +58,8 @@ main()
     loadMaze();
     system("CLS");
     printMaze();
-    bool gameRunning = true;
+    for (int i = lives;i!=0;i--){
+        bool gameRunning = true;
     while (gameRunning)
     {
         Sleep(100);
@@ -73,7 +78,7 @@ main()
         {
             break;
         }
-        gameRunning = move(); 
+        gameRunning = move();
         // printScore();
         if (GetAsyncKeyState(VK_LEFT))
         {
@@ -96,9 +101,23 @@ main()
             cout << "gameover" << endl;
             gameRunning = false;
         }
-        gotoxy(21, 25);
+        gotoxy(0, 25);
         printScore();
+        gotoxy(40,25);
+        printLives();
     }
+    calculateLives();
+    loadMaze();
+    }
+}
+void calculateLives()
+{
+    lives = lives - 1;
+}
+void printLives()
+{
+
+cout<< "Lives: " << lives ;
 }
 void calculateScore()
 {
@@ -106,8 +125,18 @@ void calculateScore()
 }
 void printScore()
 {
-    cout << endl
-         << "Score: " << score << endl;
+    cout << "Score: " << score;
+}
+void resetMaze(){
+loadMaze();
+ghostX1 = 19;
+ghostY1 = 25;
+ghostX2 = 3;
+ghostY2 = 3;
+ghostX3 = 22;
+ghostY3 = 2;
+ghostX4 = 2;
+ghostY4 = 23;
 }
 void movePacmanLeft()
 {
@@ -266,78 +295,72 @@ bool ghostMovement()
 
 bool ghost4MoveRight()
 {
-  //  if (maze[ghostX4][ghostY4 + 1] == ' ' || maze[ghostX4][ghostY4 + 1] == '.')
-   // {
-        
-            maze[ghostX4][ghostY4] = previousItem4;
-            gotoxy(ghostY4, ghostX4);
-            cout << maze[ghostX4][ghostY4];
-            ghostY4++;
-            gotoxy(ghostY4, ghostX4);
-            cout << "G";
-            previousItem4 = maze[ghostX4][ghostY4];
-            if (ghostX4 == pacmanX && ghostY4 == pacmanY)
-            {
-                return 0;
-            }
-            maze[ghostX4][ghostY4] = 'E';
-    //}
+    maze[ghostX4][ghostY4] = previousItem4;
+    gotoxy(ghostY4, ghostX4);
+    cout << maze[ghostX4][ghostY4];
+    ghostY4++;
+    gotoxy(ghostY4, ghostX4);
+    cout << "G";
+    previousItem4 = maze[ghostX4][ghostY4];
+    if (ghostX4 == pacmanX && ghostY4 == pacmanY)
+    {
+        return 0;
+    }
+    maze[ghostX4][ghostY4] = 'E';
     return true;
 }
 bool ghost4MoveLeft()
 {
-   // if (maze[ghostX4][ghostY4 - 1] == ' ' || maze[ghostX4][ghostY4 - 1] == '.' || maze[ghostX4][ghostY4 - 1] == 'P')
-    //{
-      maze[ghostX4][ghostY4] = previousItem4;
-            gotoxy(ghostY4, ghostX4);
-            cout << maze[ghostX4][ghostY4];
-            ghostY4--;
-            gotoxy(ghostY4, ghostX4);
-            cout << "G";
-            previousItem4 = maze[ghostX4][ghostY4];
-            if (ghostX4 == pacmanX && ghostY4 == pacmanY)
-            {
-                return 0;
-            }
-            maze[ghostX4][ghostY4] = 'E';
+    maze[ghostX4][ghostY4] = previousItem4;
+    gotoxy(ghostY4, ghostX4);
+    cout << maze[ghostX4][ghostY4];
+    ghostY4--;
+    gotoxy(ghostY4, ghostX4);
+    cout << "G";
+    previousItem4 = maze[ghostX4][ghostY4];
+    if (ghostX4 == pacmanX && ghostY4 == pacmanY)
+    {
+        return 0;
+    }
+    maze[ghostX4][ghostY4] = 'E';
     //}
     return true;
 }
 bool ghost4MoveUp()
 {
-   // if (maze[ghostX4 - 1][ghostY4] == ' ' || maze[ghostX4 - 1][ghostY4] == '.' || maze[ghostX4 - 1][ghostY4] == 'P')
+    // if (maze[ghostX4 - 1][ghostY4] == ' ' || maze[ghostX4 - 1][ghostY4] == '.' || maze[ghostX4 - 1][ghostY4] == 'P')
     //{
-     maze[ghostX4][ghostY4] = previousItem4;
-            gotoxy(ghostY4, ghostX4);
-            cout << maze[ghostX4][ghostY4];
-            ghostX4--;
-            gotoxy(ghostY4, ghostX4);
-            cout << "G";
-            previousItem4 = maze[ghostX4][ghostY4];
-            if (ghostX4 == pacmanX && ghostY4 == pacmanY)
-            {
-                return 0;
-            }
-            maze[ghostX4][ghostY4] = 'E'; 
-   // }
+    maze[ghostX4][ghostY4] = previousItem4;
+    gotoxy(ghostY4, ghostX4);
+    cout << maze[ghostX4][ghostY4];
+    ghostX4--;
+    gotoxy(ghostY4, ghostX4);
+    cout << "G";
+    previousItem4 = maze[ghostX4][ghostY4];
+    if (ghostX4 == pacmanX && ghostY4 == pacmanY)
+    {
+        return 0;
+    }
+    maze[ghostX4][ghostY4] = 'E';
+    // }
     return true;
 }
 bool ghost4MoveDown()
 {
-    //if (maze[ghostX4 + 1][ghostY4] == ' ' || maze[ghostX4 + 1][ghostY4] == '.' || maze[ghostX4 + 1][ghostY4] == 'P')
+    // if (maze[ghostX4 + 1][ghostY4] == ' ' || maze[ghostX4 + 1][ghostY4] == '.' || maze[ghostX4 + 1][ghostY4] == 'P')
     //{
-     maze[ghostX4][ghostY4] = previousItem4;
-            gotoxy(ghostY4, ghostX4);
-            cout << maze[ghostX4][ghostY4];
-            ghostX4++;
-            gotoxy(ghostY4, ghostX4);
-            cout << "G";
-            previousItem4 = maze[ghostX4][ghostY4];
-            if (ghostX4 == pacmanX && ghostY4 == pacmanY)
-            {
-                return 0;
-            }
-            maze[ghostX4][ghostY4] = 'E';
+    maze[ghostX4][ghostY4] = previousItem4;
+    gotoxy(ghostY4, ghostX4);
+    cout << maze[ghostX4][ghostY4];
+    ghostX4++;
+    gotoxy(ghostY4, ghostX4);
+    cout << "G";
+    previousItem4 = maze[ghostX4][ghostY4];
+    if (ghostX4 == pacmanX && ghostY4 == pacmanY)
+    {
+        return 0;
+    }
+    maze[ghostX4][ghostY4] = 'E';
     //}
     return true;
 }
@@ -350,10 +373,10 @@ bool move()
     {
         if (ghostX4 > pacmanX)
         {
-            if (maze[ghostX4 - 1][ghostY4] !='|' && maze[ghostX4 - 1][ghostY4] != '#' && maze[ghostX4-1][ghostY4] != '%')
+            if (maze[ghostX4 - 1][ghostY4] != '|' && maze[ghostX4 - 1][ghostY4] != '#' && maze[ghostX4 - 1][ghostY4] != '%')
             {
                 flag = ghost4MoveUp();
-            col_flag = "pass";
+                col_flag = "pass";
             }
             else
             {
@@ -362,30 +385,31 @@ bool move()
         }
         else if (ghostX4 < pacmanX)
         {
-            if (maze[ghostX4 + 1][pacmanX] != '#' && maze[ghostX4 + 1][ghostY4] != '|' && maze[ghostX4+1][ghostY4] != '%')
+            if (maze[ghostX4 + 1][pacmanX] != '#' && maze[ghostX4 + 1][ghostY4] != '|' && maze[ghostX4 + 1][ghostY4] != '%')
             {
                 flag = ghost4MoveDown();
-            col_flag = "pass";
+                col_flag = "pass";
             }
-           else
+            else
             {
                 col_flag = "stuck";
             }
         }
-        else {
+        else
+        {
             flag1 = true;
         }
-        
-        switch_flag = false;    
+
+        switch_flag = false;
     }
-    else if(!switch_flag && count == 0)
+    else if (!switch_flag && count == 0)
     {
         if (ghostY4 > pacmanY)
         {
-            if (maze[ghostX4][ghostY4-1] != '#' && maze[ghostX4][ghostY4-1] != '|' && maze[ghostX4][ghostY4-1] != '%')
+            if (maze[ghostX4][ghostY4 - 1] != '#' && maze[ghostX4][ghostY4 - 1] != '|' && maze[ghostX4][ghostY4 - 1] != '%')
             {
                 flag = ghost4MoveLeft();
-            row_flag = "pass";
+                row_flag = "pass";
             }
             else
             {
@@ -394,26 +418,28 @@ bool move()
         }
         else if (ghostY4 < pacmanY)
         {
-            if (maze[ghostX4][ghostY4+1] != '#' && maze[ghostX4][ghostY4+1] != '|' && maze[ghostX4][ghostY4+1]!='%')
+            if (maze[ghostX4][ghostY4 + 1] != '#' && maze[ghostX4][ghostY4 + 1] != '|' && maze[ghostX4][ghostY4 + 1] != '%')
             {
                 flag = ghost4MoveRight();
-            row_flag = "pass";
+                row_flag = "pass";
             }
             else
             {
                 row_flag = "stuck";
             }
         }
-        else{
+        else
+        {
             flag2 = true;
         }
-        switch_flag = true;    
+        switch_flag = true;
     }
-    else if(flag1 == true && row_flag == "stuck" || flag2 == true && col_flag == "stuck")
+    else if (flag1 == true && row_flag == "stuck" || flag2 == true && col_flag == "stuck")
     {
         flag = ghost4MoveRandom();
         count++;
-        if(count == 10){
+        if (count == 10)
+        {
             count = 0;
         }
     }
@@ -561,8 +587,9 @@ void ghost3MoveRight()
     previousItem3 = maze[ghostX3][ghostY3];
     maze[ghostX3][ghostY3] = 'G';
 }
-bool ghost4MoveRandom(){
-      int value = ghostDirection();
+bool ghost4MoveRandom()
+{
+    int value = ghostDirection();
     if (value == 1)
     {
         if (maze[ghostX4][ghostY4 - 1] == ' ' || maze[ghostX4][ghostY4 - 1] == '.' || maze[ghostX4][ghostY4 - 1] == 'P')
