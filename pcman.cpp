@@ -25,6 +25,10 @@ void ghost3MoveLeft();
 void ghost3MoveRight();
 bool ghost4MoveRandom();
 bool move();
+void resetGhost1();
+void resetGhost2();
+void resetGhost3();
+void resetGhost4();
 void loadMaze();
 void loadNewMaze();
 void resetMaze();
@@ -105,9 +109,11 @@ main()
                 cout << "gameover" << endl;
                 gameRunning = false;
             }
-            if(energizerStatus == "eaten"){
+            if (energizerStatus == "eaten")
+            {
                 energizer_count++;
-                if(energizer_count == 30){
+                if (energizer_count == 30)
+                {
                     energizerStatus = "Low_power";
                 }
             }
@@ -196,10 +202,53 @@ void resetMaze()
     gotoxy(ghostY4, ghostX4);
     cout << "G";
 }
+void resetGhost1()
+{
+    previousItem1 = ' ';
+    gotoxy(ghostY1, ghostX1);
+    cout << " ";
+    ghostX1 = 19;
+    ghostY1 = 25;
+    maze[ghostX1][ghostY1] = 'G';
+    gotoxy(ghostY1, ghostX1);
+    cout << "G";
+}
+void resetGhost2()
+{
+    previousItem2 = ' ';
+    gotoxy(ghostY2, ghostX2);
+    cout << " ";
+    ghostX2 = 3;
+    ghostY2 = 3;
+    maze[ghostX2][ghostY2] = 'G';
+    gotoxy(ghostY2, ghostX2);
+    cout << "G";
+}
+void resetGhost3()
+{
+    previousItem3 = ' ';
+    gotoxy(ghostY3, ghostX3);
+    cout << " ";
+    ghostX3 = 22;
+    ghostY3 = 2;
+    maze[ghostX3][ghostY3] = 'G';
+    gotoxy(ghostY3, ghostX3);
+    cout << "G";
+}
+void resetGhost4()
+{
+    previousItem4 = ' ';
+    gotoxy(ghostY4, ghostX4);
+    cout << " ";
+    ghostX4 = 3;
+    ghostY4 = 8;
+    maze[ghostX4][ghostY4] = 'G';
+    gotoxy(ghostY4, ghostX4);
+    cout << "G";
+}
 void movePacmanLeft()
 {
-    if (maze[pacmanX][pacmanY - 1] == ' ' || maze[pacmanX][pacmanY - 1] ==
-                                                 '.' || maze[pacmanX][pacmanY-1] == '+')
+    if (maze[pacmanX][pacmanY - 1] == ' ' || maze[pacmanX][pacmanY - 1] == '.' || maze[pacmanX][pacmanY - 1] == '+')
     {
         maze[pacmanX][pacmanY] = ' ';
         gotoxy(pacmanY, pacmanX);
@@ -211,7 +260,8 @@ void movePacmanLeft()
         {
             calculateScore();
         }
-        else if(maze[pacmanX][pacmanY] == '+'){
+        else if (maze[pacmanX][pacmanY] == '+')
+        {
             energizerStatus = "eaten";
         }
         maze[pacmanX][pacmanY] = 'P';
@@ -219,7 +269,7 @@ void movePacmanLeft()
 }
 void movePacmanRight()
 {
-    if (maze[pacmanX][pacmanY + 1] == ' ' || maze[pacmanX][pacmanY + 1] == '.' || maze[pacmanX][pacmanY+1] == '+')
+    if (maze[pacmanX][pacmanY + 1] == ' ' || maze[pacmanX][pacmanY + 1] == '.' || maze[pacmanX][pacmanY + 1] == '+')
     {
         maze[pacmanX][pacmanY] = ' ';
         gotoxy(pacmanY, pacmanX);
@@ -231,7 +281,8 @@ void movePacmanRight()
         {
             calculateScore();
         }
-        else if(maze[pacmanX][pacmanY] == '+'){
+        else if (maze[pacmanX][pacmanY] == '+')
+        {
             energizerStatus = "eaten";
         }
         maze[pacmanX][pacmanY] = 'P';
@@ -239,7 +290,7 @@ void movePacmanRight()
 }
 void movePacmanUp()
 {
-    if (maze[pacmanX - 1][pacmanY] == ' ' || maze[pacmanX - 1][pacmanY] == '.' || maze[pacmanX-1][pacmanY] == '+')
+    if (maze[pacmanX - 1][pacmanY] == ' ' || maze[pacmanX - 1][pacmanY] == '.' || maze[pacmanX - 1][pacmanY] == '+')
     {
         maze[pacmanX][pacmanY] = ' ';
         gotoxy(pacmanY, pacmanX);
@@ -251,7 +302,8 @@ void movePacmanUp()
         {
             calculateScore();
         }
-        else if(maze[pacmanX][pacmanY] == '+'){
+        else if (maze[pacmanX][pacmanY] == '+')
+        {
             energizerStatus = "eaten";
         }
         maze[pacmanX][pacmanY] = 'P';
@@ -259,7 +311,7 @@ void movePacmanUp()
 }
 void movePacmanDown()
 {
-    if (maze[pacmanX + 1][pacmanY] == ' ' || maze[pacmanX + 1][pacmanY] == '.' || maze[pacmanX+1][pacmanY] == '+')
+    if (maze[pacmanX + 1][pacmanY] == ' ' || maze[pacmanX + 1][pacmanY] == '.' || maze[pacmanX + 1][pacmanY] == '+')
     {
         maze[pacmanX][pacmanY] = ' ';
         gotoxy(pacmanY, pacmanX);
@@ -271,7 +323,8 @@ void movePacmanDown()
         {
             calculateScore();
         }
-        else if(maze[pacmanX][pacmanY] == '+'){
+        else if (maze[pacmanX][pacmanY] == '+')
+        {
             energizerStatus = "eaten";
         }
         maze[pacmanX][pacmanY] = 'P';
@@ -297,8 +350,8 @@ bool ghostMovement()
             ghostY1 = ghostY1 - 1;
             gotoxy(ghostY1, ghostX1);
             cout << "G";
-            if(maze[ghostX1][ghostY1] != 'G')
-            previousItem1 = maze[ghostX1][ghostY1];
+            if (maze[ghostX1][ghostY1] != 'G')
+                previousItem1 = maze[ghostX1][ghostY1];
             if (ghostX1 == pacmanX && ghostY1 == pacmanY && energizerStatus == "Low_power")
             {
                 return 0;
@@ -316,8 +369,8 @@ bool ghostMovement()
             ghostY1 = ghostY1 + 1;
             gotoxy(ghostY1, ghostX1);
             cout << "G";
-            if(maze[ghostX1][ghostY1] != 'G')
-            previousItem1 = maze[ghostX1][ghostY1];
+            if (maze[ghostX1][ghostY1] != 'G')
+                previousItem1 = maze[ghostX1][ghostY1];
             if (ghostX1 == pacmanX && ghostY1 == pacmanY && energizerStatus == "Low_power")
             {
                 return 0;
@@ -335,8 +388,8 @@ bool ghostMovement()
             ghostX1 = ghostX1 - 1;
             gotoxy(ghostY1, ghostX1);
             cout << "G";
-            if(maze[ghostX1][ghostY1]!='G')
-            previousItem1 = maze[ghostX1][ghostY1];
+            if (maze[ghostX1][ghostY1] != 'G')
+                previousItem1 = maze[ghostX1][ghostY1];
             if (ghostX1 == pacmanX && ghostY1 == pacmanY && energizerStatus == "Low_power")
             {
                 return 0;
@@ -354,8 +407,8 @@ bool ghostMovement()
             ghostX1 = ghostX1 + 1;
             gotoxy(ghostY1, ghostX1);
             cout << "G";
-            if(maze[ghostX1][ghostY1] != 'G')
-            previousItem1 = maze[ghostX1][ghostY1];
+            if (maze[ghostX1][ghostY1] != 'G')
+                previousItem1 = maze[ghostX1][ghostY1];
             if (ghostX1 == pacmanX && ghostY1 == pacmanY && energizerStatus == "Low_power")
             {
                 return 0;
@@ -374,8 +427,10 @@ bool ghost4MoveRight()
     ghostY4++;
     gotoxy(ghostY4, ghostX4);
     cout << "G";
-    if(maze[ghostX4][ghostY4] != 'G')
-    {previousItem4 = maze[ghostX4][ghostY4];}
+    if (maze[ghostX4][ghostY4] != 'G')
+    {
+        previousItem4 = maze[ghostX4][ghostY4];
+    }
     if (ghostX4 == pacmanX && ghostY4 == pacmanY && energizerStatus == "Low_power")
     {
         return 0;
@@ -391,8 +446,10 @@ bool ghost4MoveLeft()
     ghostY4--;
     gotoxy(ghostY4, ghostX4);
     cout << "G";
-    if(maze[ghostX4][ghostY4]!='G')
-    {previousItem4 = maze[ghostX4][ghostY4];}
+    if (maze[ghostX4][ghostY4] != 'G')
+    {
+        previousItem4 = maze[ghostX4][ghostY4];
+    }
     if (ghostX4 == pacmanX && ghostY4 == pacmanY && energizerStatus == "Low_power")
     {
         return 0;
@@ -408,9 +465,11 @@ bool ghost4MoveUp()
     ghostX4--;
     gotoxy(ghostY4, ghostX4);
     cout << "G";
-    if(maze[ghostX4][ghostY4] != 'G')
-    {previousItem4 = maze[ghostX4][ghostY4];}
-    if (ghostX4 == pacmanX && ghostY4 == pacmanY && energizerStatus == "Low_power") 
+    if (maze[ghostX4][ghostY4] != 'G')
+    {
+        previousItem4 = maze[ghostX4][ghostY4];
+    }
+    if (ghostX4 == pacmanX && ghostY4 == pacmanY && energizerStatus == "Low_power")
     {
         return 0;
     }
@@ -425,8 +484,10 @@ bool ghost4MoveDown()
     ghostX4++;
     gotoxy(ghostY4, ghostX4);
     cout << "G";
-    if(maze[ghostX4][ghostY4] != 'G')
-  {  previousItem4 = maze[ghostX4][ghostY4];}
+    if (maze[ghostX4][ghostY4] != 'G')
+    {
+        previousItem4 = maze[ghostX4][ghostY4];
+    }
     if (ghostX4 == pacmanX && ghostY4 == pacmanY && energizerStatus == "Low_power")
     {
         return 0;
@@ -734,5 +795,3 @@ bool ghost4MoveRandom()
     }
     return 1;
 }
-
-
