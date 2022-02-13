@@ -352,9 +352,16 @@ bool ghostMovement()
             cout << "G";
             if (maze[ghostX1][ghostY1] != 'G')
                 previousItem1 = maze[ghostX1][ghostY1];
-            if (ghostX1 == pacmanX && ghostY1 == pacmanY && energizerStatus == "Low_power")
+            if (ghostX1 == pacmanX && ghostY1 == pacmanY)
             {
-                return 0;
+                if (energizerStatus == "eaten")
+                {
+                    resetGhost1();
+                }
+                else
+                {
+                    return 0;
+                }
             }
             maze[ghostX1][ghostY1] = 'G';
         }
@@ -371,9 +378,16 @@ bool ghostMovement()
             cout << "G";
             if (maze[ghostX1][ghostY1] != 'G')
                 previousItem1 = maze[ghostX1][ghostY1];
-            if (ghostX1 == pacmanX && ghostY1 == pacmanY && energizerStatus == "Low_power")
+            if (ghostX1 == pacmanX && ghostY1 == pacmanY)
             {
-                return 0;
+                if (energizerStatus == "eaten")
+                {
+                    resetGhost1();
+                }
+                else
+                {
+                    return 0;
+                }
             }
             maze[ghostX1][ghostY1] = 'G';
         }
@@ -390,9 +404,16 @@ bool ghostMovement()
             cout << "G";
             if (maze[ghostX1][ghostY1] != 'G')
                 previousItem1 = maze[ghostX1][ghostY1];
-            if (ghostX1 == pacmanX && ghostY1 == pacmanY && energizerStatus == "Low_power")
+            if (ghostX1 == pacmanX && ghostY1 == pacmanY)
             {
-                return 0;
+                if (energizerStatus == "eaten")
+                {
+                    resetGhost1();
+                }
+                else
+                {
+                    return 0;
+                }
             }
             maze[ghostX1][ghostY1] = 'G';
         }
@@ -409,9 +430,16 @@ bool ghostMovement()
             cout << "G";
             if (maze[ghostX1][ghostY1] != 'G')
                 previousItem1 = maze[ghostX1][ghostY1];
-            if (ghostX1 == pacmanX && ghostY1 == pacmanY && energizerStatus == "Low_power")
+            if (ghostX1 == pacmanX && ghostY1 == pacmanY)
             {
-                return 0;
+                if (energizerStatus == "eaten")
+                {
+                    resetGhost1();
+                }
+                else
+                {
+                    return 0;
+                }
             }
             maze[ghostX1][ghostY1] = 'G';
         }
@@ -431,9 +459,16 @@ bool ghost4MoveRight()
     {
         previousItem4 = maze[ghostX4][ghostY4];
     }
-    if (ghostX4 == pacmanX && ghostY4 == pacmanY && energizerStatus == "Low_power")
+    if (ghostX4 == pacmanX && ghostY4 == pacmanY)
     {
-        return 0;
+        if (energizerStatus == "eaten")
+        {
+            resetGhost4();
+        }
+        else
+        {
+            return 0;
+        }
     }
     maze[ghostX4][ghostY4] = 'G';
     return true;
@@ -450,9 +485,16 @@ bool ghost4MoveLeft()
     {
         previousItem4 = maze[ghostX4][ghostY4];
     }
-    if (ghostX4 == pacmanX && ghostY4 == pacmanY && energizerStatus == "Low_power")
+    if (ghostX4 == pacmanX && ghostY4 == pacmanY)
     {
-        return 0;
+        if (energizerStatus == "eaten")
+        {
+            resetGhost4();
+        }
+        else
+        {
+            return 0;
+        }
     }
     maze[ghostX4][ghostY4] = 'G';
     return true;
@@ -469,9 +511,16 @@ bool ghost4MoveUp()
     {
         previousItem4 = maze[ghostX4][ghostY4];
     }
-    if (ghostX4 == pacmanX && ghostY4 == pacmanY && energizerStatus == "Low_power")
+    if (ghostX4 == pacmanX && ghostY4 == pacmanY)
     {
-        return 0;
+        if (energizerStatus == "eaten")
+        {
+            resetGhost4();
+        }
+        else
+        {
+            return 0;
+        }
     }
     maze[ghostX4][ghostY4] = 'G';
     return true;
@@ -488,9 +537,16 @@ bool ghost4MoveDown()
     {
         previousItem4 = maze[ghostX4][ghostY4];
     }
-    if (ghostX4 == pacmanX && ghostY4 == pacmanY && energizerStatus == "Low_power")
+    if (ghostX4 == pacmanX && ghostY4 == pacmanY)
     {
-        return 0;
+        if (energizerStatus == "eaten")
+        {
+            resetGhost4();
+        }
+        else
+        {
+            return 0;
+        }
     }
     maze[ghostX4][ghostY4] = 'G';
     return true;
@@ -631,9 +687,14 @@ bool ghostMoveVertical()
         }
         ghost2MoveDown();
     }
-    if (ghostX2 == pacmanX && ghostY2 == pacmanY && energizerStatus == "Low_power")
+    if (ghostX2 == pacmanX && ghostY2 == pacmanY)
     {
-        return false;
+        if(energizerStatus == "eaten"){
+            resetGhost2();
+        }
+        else{
+            return 0;
+        }
     }
     return true;
 }
@@ -655,9 +716,16 @@ bool ghostMoveHorizontal()
         }
         ghost3MoveLeft();
     }
-    if (ghostX3 == pacmanX && ghostY3 == pacmanY && energizerStatus == "Low_power")
+    if (ghostX3 == pacmanX && ghostY3 == pacmanY)
     {
-        return false;
+        if (energizerStatus == "eaten")
+        {
+            resetGhost3();
+        }
+        else
+        {
+            return false;
+        }
     }
     return true;
 }
@@ -732,9 +800,16 @@ bool ghost4MoveRandom()
             gotoxy(ghostY4, ghostX4);
             cout << "G";
             previousItem4 = maze[ghostX4][ghostY4];
-            if (ghostX4 == pacmanX && ghostY4 == pacmanY && energizerStatus == "Low_power")
+            if (ghostX4 == pacmanX && ghostY4 == pacmanY)
             {
-                return 0;
+                if (energizerStatus == "eaten")
+                {
+                    resetGhost4();
+                }
+                else
+                {
+                    return 0;
+                }
             }
             maze[ghostX4][ghostY4] = 'G';
         }
@@ -750,9 +825,16 @@ bool ghost4MoveRandom()
             gotoxy(ghostY4, ghostX4);
             cout << "G";
             previousItem4 = maze[ghostX4][ghostY4];
-            if (ghostX4 == pacmanX && ghostY4 == pacmanY && energizerStatus == "Low_power")
+            if (ghostX4 == pacmanX && ghostY4 == pacmanY)
             {
-                return 0;
+                if (energizerStatus == "eaten")
+                {
+                    resetGhost4();
+                }
+                else
+                {
+                    return 0;
+                }
             }
             maze[ghostX4][ghostY4] = 'G';
         }
@@ -768,9 +850,16 @@ bool ghost4MoveRandom()
             gotoxy(ghostY4, ghostX4);
             cout << "G";
             previousItem4 = maze[ghostX4][ghostY4];
-            if (ghostX4 == pacmanX && ghostY4 == pacmanY && energizerStatus == "Low_power")
+            if (ghostX4 == pacmanX && ghostY4 == pacmanY)
             {
-                return 0;
+                if (energizerStatus == "eaten")
+                {
+                    resetGhost4();
+                }
+                else
+                {
+                    return 0;
+                }
             }
             maze[ghostX4][ghostY4] = 'G';
         }
@@ -786,9 +875,16 @@ bool ghost4MoveRandom()
             gotoxy(ghostY4, ghostX4);
             cout << "G";
             previousItem4 = maze[ghostX4][ghostY4];
-            if (ghostX4 == pacmanX && ghostY4 == pacmanY && energizerStatus == "Low_power")
+            if (ghostX4 == pacmanX && ghostY4 == pacmanY)
             {
-                return 0;
+                if (energizerStatus == "eaten")
+                {
+                    resetGhost4();
+                }
+                else
+                {
+                    return 0;
+                }
             }
             maze[ghostX4][ghostY4] = 'G';
         }
