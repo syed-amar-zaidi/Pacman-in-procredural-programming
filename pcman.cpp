@@ -30,6 +30,7 @@ void loadNewMaze();
 void resetMaze();
 void printMaze();
 bool isEnergizer();
+int energizer_count = 0;
 string energizerStatus = "Low_power";
 void gotoxy(int x, int y);
 int count = 0;
@@ -103,6 +104,12 @@ main()
             {
                 cout << "gameover" << endl;
                 gameRunning = false;
+            }
+            if(energizerStatus == "eaten"){
+                energizer_count++;
+                if(energizer_count == 30){
+                    energizerStatus = "Low_power";
+                }
             }
             gotoxy(0, 25);
             printScore();
