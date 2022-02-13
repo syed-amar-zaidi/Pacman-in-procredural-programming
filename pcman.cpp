@@ -377,8 +377,6 @@ bool ghost4MoveLeft()
 }
 bool ghost4MoveUp()
 {
-    // if (maze[ghostX4 - 1][ghostY4] == ' ' || maze[ghostX4 - 1][ghostY4] == '.' || maze[ghostX4 - 1][ghostY4] == 'P')
-    //{
     maze[ghostX4][ghostY4] = previousItem4;
     gotoxy(ghostY4, ghostX4);
     cout << maze[ghostX4][ghostY4];
@@ -390,14 +388,11 @@ bool ghost4MoveUp()
     {
         return 0;
     }
-    maze[ghostX4][ghostY4] = 'E';
-    // }
+    maze[ghostX4][ghostY4] = 'G';
     return true;
 }
 bool ghost4MoveDown()
 {
-    // if (maze[ghostX4 + 1][ghostY4] == ' ' || maze[ghostX4 + 1][ghostY4] == '.' || maze[ghostX4 + 1][ghostY4] == 'P')
-    //{
     maze[ghostX4][ghostY4] = previousItem4;
     gotoxy(ghostY4, ghostX4);
     cout << maze[ghostX4][ghostY4];
@@ -409,8 +404,7 @@ bool ghost4MoveDown()
     {
         return 0;
     }
-    maze[ghostX4][ghostY4] = 'E';
-    //}
+    maze[ghostX4][ghostY4] = 'G';
     return true;
 }
 bool move()
